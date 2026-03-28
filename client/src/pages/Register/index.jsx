@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Input from '../../components/ui/Input';
 import Button from '../../components/ui/Button';
+import PageShell from '../../components/ui/PageShell';
 import { useAuth } from '../../context/Auth';
 
 function Register() {
@@ -38,39 +39,37 @@ function Register() {
   };
 
   return (
-    <div className="page">
-      <div className="card">
-        <h1>Create account</h1>
-        <p className="muted">Register to access your dashboard.</p>
-        <form onSubmit={onSubmit} className="form">
-          <Input label="Name" name="name" value={form.name} onChange={onChange} required />
-          <Input label="Email" name="email" type="email" value={form.email} onChange={onChange} required />
-          <Input
-            label="Password"
-            name="password"
-            type="password"
-            value={form.password}
-            onChange={onChange}
-            required
-          />
-          <Input
-            label="Confirm Password"
-            name="confirm"
-            type="password"
-            value={form.confirm}
-            onChange={onChange}
-            required
-          />
-          {error && <div className="error">{error}</div>}
-          <Button type="submit" disabled={loading}>
-            {loading ? 'Creating...' : 'Register'}
-          </Button>
-        </form>
-        <p className="muted">
-          Already have an account? <Link to="/login">Login</Link>
-        </p>
-      </div>
-    </div>
+    <PageShell>
+      <h1>Create account</h1>
+      <p className="muted">Start your session in seconds.</p>
+      <form onSubmit={onSubmit} className="form">
+        <Input label="Name" name="name" value={form.name} onChange={onChange} required />
+        <Input label="Email" name="email" type="email" value={form.email} onChange={onChange} required />
+        <Input
+          label="Password"
+          name="password"
+          type="password"
+          value={form.password}
+          onChange={onChange}
+          required
+        />
+        <Input
+          label="Confirm Password"
+          name="confirm"
+          type="password"
+          value={form.confirm}
+          onChange={onChange}
+          required
+        />
+        {error && <div className="error">{error}</div>}
+        <Button type="submit" disabled={loading}>
+          {loading ? 'Creating...' : 'Register'}
+        </Button>
+      </form>
+      <p className="muted">
+        Already have an account? <Link to="/login">Login</Link>
+      </p>
+    </PageShell>
   );
 }
 
