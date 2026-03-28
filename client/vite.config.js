@@ -4,5 +4,9 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/Mern-Auth-Login-Register/'
+  base: '/Mern-Auth-Login-Register/',
+  build: {
+    outDir: '../docs',
+    emptyOutDir: true
+  }
 })
